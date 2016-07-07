@@ -21,6 +21,7 @@ if platform_family?('windows')
     source node['groovy']['url']
     checksum node['groovy']['checksum']
     overwrite false
+    not_if { Dir.exists?("#{node['groovy']['home']}\\groovy-#{node['groovy']['version']}") }
   end
 
   windows_path ::File.join(node['groovy']['home'], "groovy-#{node['groovy']['version']}", 'bin') do
